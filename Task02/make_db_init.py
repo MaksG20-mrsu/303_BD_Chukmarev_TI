@@ -29,7 +29,7 @@ CREATE TABLE ratings(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     movie_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL,
+    rating REAL NOT NULL,
     timestamp INTEGER NOT NULL,
     FOREIGN KEY (user_id)  REFERENCES users(id),
     FOREIGN KEY (movie_id) REFERENCES movies(id)
@@ -110,6 +110,29 @@ def insert_movies(sql_script, movies_file):
             
             current_line = next_line
 
+def insert_ratings(sql_script, ratings_file):
+    sql_script.write('INSERT INTO `ratings` VALUES\n')
+
+    with open(ratings_file, 'r') as f:
+        reader = csv.reader(f)
+
+        next(reader, None) # skip header
+        current_line = next(reader, None)
+
+        while current_line is not None:
+            (user_id, movie_id, rating, timestamp) = current_line
+            sql_script.write(f'\t (NULL, {user_id}, {movie_id}, {rating}, {timestamp})')
+
+            next_line = next(reader, None)
+
+            if next_line is not None:
+                sql_script.write(',\n')
+            else:
+                sql_script.write(';\n')
+            
+            current_line = next_line
+
+
 def main():
     with open(script_dir, 'w') as f:
         f.write(SQL_SCRIPT)
@@ -118,6 +141,7 @@ def main():
         f.write('\n')
         insert_movies(f, './movies.csv')
         f.write('\n')
+        insert_ratings(f, './ratings.csv')
 
 if __name__ == '__main__':
     main()
