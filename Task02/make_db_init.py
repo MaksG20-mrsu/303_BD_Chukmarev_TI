@@ -65,7 +65,7 @@ def sql_escape_quotes(a):
     return a.replace('\'', '\'\'')
 
 def sql_string(a):
-    return f'`{sql_escape_quotes(a)}`'
+    return f'\'{sql_escape_quotes(a)}\''
 
 def insert_users(sql_script, users_file):
     sql_script.write('INSERT INTO `users` VALUES\n')
