@@ -1,0 +1,1 @@
+SELECT * FROM users WHERE name LIKE 'A%% %%' ORDER BY register_date LIMIT 5;
