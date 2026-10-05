@@ -133,7 +133,7 @@ def insert_ratings(sql_script, ratings_file):
             current_line = next_line
 
 def insert_tags(sql_script, tags_file):
-    sql_script.write('INSERT INTO `ratings` VALUES\n')
+    sql_script.write('INSERT INTO `tags` VALUES\n')
 
     with open(tags_file, 'r') as f:
         reader = csv.reader(f)

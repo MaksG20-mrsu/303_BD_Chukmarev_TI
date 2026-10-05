@@ -29503,7 +29503,7 @@ INSERT INTO `ratings` VALUES
 	 (NULL, 120, 1210, 5.0, 860070182),
 	 (NULL, 120, 1367, 4.0, 860070258);
 
-INSERT INTO `ratings` VALUES
+INSERT INTO `tags` VALUES
 	 (NULL, 2, 60756, 'funny', 1445714994),
 	 (NULL, 2, 60756, 'Highly quotable', 1445714996),
 	 (NULL, 2, 60756, 'will ferrell', 1445714992),
