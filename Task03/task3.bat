@@ -17,3 +17,6 @@ sqlite3 movies_rating.db -box -echo < "./script4.sql"
 
 echo --------------------------------------------------
 sqlite3 movies_rating.db -box -echo < "./script5.sql"
+
+echo --------------------------------------------------
+sqlite3 movies_rating.db -box -echo < "./script6.sql"
